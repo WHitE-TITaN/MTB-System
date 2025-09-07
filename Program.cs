@@ -8,10 +8,13 @@ namespace Main
         static void Main()
         {
             movie l1 = new movie("levithan", "Kratos", "Action", "English");
-            Console.WriteLine("completed");
+            l1.displayMovie();
 
             theatre newTheatre = new theatre(191, 140, "tagorHopuse");
             newTheatre.displayTheatreDetails();
+
+            Customer c1 = new Customer(101, "Ritik", "Delhi");
+            c1.displayCustomerDetails();
         }
     }
 }

@@ -27,19 +27,29 @@ namespace MTBSystem.module
 		//constructor for movie registration.
 		public movie(string MovieName, string ProducerName, string Genre, string Language)
 		{
-			Console.WriteLine("Generating ID");
+            /*id generation - auto generated as 
+			<<FirstTwoCharsFromMovieName>> -  
+			<<FirstTowCharsFromProducerName>> - <<FirstTwoCharsFromGenre>> - 
+			<<FirstTwoCharsFromLanguage>> */
+            Console.WriteLine("Generating ID");
 			string id = MovieName.Substring(0, 2) + ProducerName.Substring(0, 2) +
 				Genre.Substring(0, 2) + Language.Substring(0, 2);
 
-			MovieID = id;
-		}
+			this.MovieID = id;
+			this.MovieName = MovieName;
+			this.ProducerName = ProducerName;
+			this.Genre = Genre;
+			this.Language = Language;
+			Console.WriteLine("\nMovie Registered Successfully");
+        }
 
+		//display details of movie.
 		public void displayMovie()
 		{
-            Console.WriteLine($"Details are As - \nName - {MovieName}" +
-                $"\n Producer - {ProducerName}" +
-                $"\n Genre - {Genre}" +
-                $"\n ID - {id}");
+            Console.WriteLine($"Details are As - \nName - {this.MovieName}" +
+                $"\n Producer - {this.ProducerName}" +
+                $"\n Genre - {this.Genre}" +
+                $"\n ID - {this.MovieID}");
         }
 	}
 }
