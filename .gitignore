@@ -1,1 +1,19 @@
+# Ignor vs coded cache
 .vs/
+
+# Ignore build outputs
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.suo
+
+# Ignore compiled binaries
+*.dll
+*.exe
+*.pdb
+*.cache
+
+# Ignore logs
+*.log
