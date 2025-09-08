@@ -1,5 +1,5 @@
 ﻿using System;
-
+using MTBSystem.module.exception;
 
 //main module namespace
 //constains all then classes of the module;
@@ -27,10 +27,17 @@ namespace MTBSystem.module
 		//constructor for movie registration.
 		public movie(string MovieName, string ProducerName, string Genre, string Language)
 		{
-            /*id generation - auto generated as 
+			/*id generation - auto generated as 
 			<<FirstTwoCharsFromMovieName>> -  
 			<<FirstTowCharsFromProducerName>> - <<FirstTwoCharsFromGenre>> - 
 			<<FirstTwoCharsFromLanguage>> */
+
+			//check if language is valid or not.
+			if (!isValidLanguage(Language))
+			{
+				throw new LanguageException(Language);
+			}
+
             Console.WriteLine("Generating ID");
 			string id = MovieName.Substring(0, 2) + ProducerName.Substring(0, 2) +
 				Genre.Substring(0, 2) + Language.Substring(0, 2);
@@ -51,5 +58,19 @@ namespace MTBSystem.module
                 $"\n Genre - {this.Genre}" +
                 $"\n ID - {this.MovieID}");
         }
-	}
+
+        //function to check if the language is valid or not.
+        private bool isValidLanguage(string language)
+		{
+			string[] validLanguages = { "English", "Hindi", "bhojpuri", "Marathi"};
+			foreach (string lang in validLanguages)
+			{
+				if(lang.Equals(language, StringComparison.OrdinalIgnoreCase))
+				{
+					return true;
+				}
+            }
+			return false;
+        }
+    }
 }
