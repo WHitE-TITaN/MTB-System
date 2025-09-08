@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MTB-System")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e7e2d97303dcc7f71912d3610c8c6a13473f55e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+557c9b45495cac5085f84b4de5b9cf35699a5df1")]
 [assembly: System.Reflection.AssemblyProductAttribute("MTB-System")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MTB-System")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
