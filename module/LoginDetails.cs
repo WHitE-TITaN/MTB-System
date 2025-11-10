@@ -1,35 +1,21 @@
 ﻿using System;
 
-//main module namespace
 namespace MTBSystem.module
 {
     public class loginDetails
     {
-        /*1. LoginID as string  
-        2. Password as string  
-        3. LoginType as string */
-        string loginID,
-            password,
-            loginType;
+        public string LoginID { get; private set; }
+        public string Password { get; private set; }
+        public string LoginType { get; private set; }
+        public int? CustomerId { get; private set; } // Link to Customer.CustomerID (nullable for admin)
 
-        //constructor for loginDetails
-        //LoginID is same as CustomerID 
-        public loginDetails(string customerID)
+        // Constructor for loginDetails
+        public loginDetails(string loginID, string password, string loginType, int? customerId)
         {
-            //default allocation of loginID and password to customerID
-            this.loginID = customerID;
-            this.password = customerID;
-
-            //static Allocation of loginType to movieadmin.
-            if (customerID != "MOVIEADMIN")
-            {
-                this.loginType = "Customer";
-            }
-            else
-            {
-                this.loginType = "Admin";
-            }
+            this.LoginID = loginID;
+            this.Password = password;
+            this.LoginType = loginType;
+            this.CustomerId = customerId;
         }
     }
 }
-
