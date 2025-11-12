@@ -1,58 +1,46 @@
 ﻿using System;
 using MTBSystem.module.exception;
 
-//main module namespace
-//constains all then classes of the module;
 namespace MTBSystem.module
 {
-    /*1. MovieID as string  
-	2. MovieName as string  
-	3. DirectorName as string  
-	4. ProducerName as string  
-	5. Duration as double  
-	6. Story as string  
-	7. Genre as string  
-	8. Language as string */
-    public class movie{
-		string MovieID,
-			MovieName,
-			ProducerName,
-			story,
-			Genre,
-			Language;
-
-		double Duration;
+    public class movie
+    {
+        public string MovieID { get; private set; }
+        public string MovieName { get; private set; }
+        public string ProducerName { get; private set; }
+        public string Genre { get; private set; }
+        public string Language { get; private set; }
+        // string story; // Unused in original logic
+        // double Duration; // Unused in original logic
 
 
-		//constructor for movie registration.
-		public movie(string MovieName, string ProducerName, string Genre, string Language)
-		{
-			/*id generation - auto generated as 
-			<<FirstTwoCharsFromMovieName>> -  
-			<<FirstTowCharsFromProducerName>> - <<FirstTwoCharsFromGenre>> - 
-			<<FirstTwoCharsFromLanguage>> */
-
-			//check if language is valid or not.
-			if (!isValidLanguage(Language))
-			{
-				throw new LanguageException(Language);
-			}
+        //constructor for movie registration.
+        public movie(string MovieName, string ProducerName, string Genre, string Language)
+        {
+            //check if language is valid or not.
+            if (!isValidLanguage(Language))
+            {
+                throw new LanguageException(Language);
+            }
 
             Console.WriteLine("Generating ID");
-			string id = MovieName.Substring(0, 2) + ProducerName.Substring(0, 2) +
-				Genre.Substring(0, 2) + Language.Substring(0, 2);
+            // Made ID uppercase and ensured 2 chars, handling short inputs
+            string id = (MovieName.Length >= 2 ? MovieName.Substring(0, 2) : MovieName).ToUpper() +
+                (ProducerName.Length >= 2 ? ProducerName.Substring(0, 2) : ProducerName).ToUpper() +
+                (Genre.Length >= 2 ? Genre.Substring(0, 2) : Genre).ToUpper() +
+                (Language.Length >= 2 ? Language.Substring(0, 2) : Language).ToUpper();
 
-			this.MovieID = id;
-			this.MovieName = MovieName;
-			this.ProducerName = ProducerName;
-			this.Genre = Genre;
-			this.Language = Language;
-			Console.WriteLine("\nMovie Registered Successfully");
+            this.MovieID = id;
+            this.MovieName = MovieName;
+            this.ProducerName = ProducerName;
+            this.Genre = Genre;
+            this.Language = Language;
+            Console.WriteLine("\nMovie Registered Successfully");
         }
 
-		//display details of movie.
-		public void displayMovie()
-		{
+        //display details of movie.
+        public void displayMovie()
+        {
             Console.WriteLine($"Details are As - \nName - {this.MovieName}" +
                 $"\n Producer - {this.ProducerName}" +
                 $"\n Genre - {this.Genre}" +
@@ -61,16 +49,16 @@ namespace MTBSystem.module
 
         //function to check if the language is valid or not.
         private bool isValidLanguage(string language)
-		{
-			string[] validLanguages = { "English", "Hindi", "bhojpuri", "Marathi"};
-			foreach (string lang in validLanguages)
-			{
-				if(lang.Equals(language, StringComparison.OrdinalIgnoreCase))
-				{
-					return true;
-				}
+        {
+            string[] validLanguages = { "English", "Hindi", "bhojpuri", "Marathi" };
+            foreach (string lang in validLanguages)
+            {
+                if (lang.Equals(language, StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
             }
-			return false;
+            return false;
         }
     }
 }
